@@ -16,11 +16,12 @@
       return
     }
 
+    let date = new Date()
     todos.value.push({
       content: input_content.value,
       category: input_category.value,
       done: false,
-      createAt: Date.now()
+      createAt: date.getTime()
     })
 
     input_content.value = ''
@@ -43,7 +44,7 @@
 
   onMounted(() => {
     name.value = localStorage.getItem('name') || []
-    
+    todos.value = JSON.parse(localStorage.getItem("todos") || [])    
   })
 </script>
 
@@ -115,4 +116,3 @@
   </section>
 </main>
 </template>
-
